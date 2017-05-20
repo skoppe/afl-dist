@@ -1,0 +1,29 @@
+box: dlanguage/ldc
+
+build:
+  steps:
+    - script:
+        name: unittests
+        code: |
+          dub test --compiler=ldc2 --build=release
+    - script:
+        name: build
+        code: |
+          dub build --compiler=ldc2 --build=release
+          cp afl-dist $WERCKER_OUTPUT_DIR
+
+deploy-docker-hub:
+  box: skoppe/afl
+  steps:
+  - script:
+      name: prep container
+      code: |
+        mv $WERCKER_SOURCE_DIR/afl-dist /afl/afl-dist
+  - internal/docker-push:
+      username: $DOCKERHUBUSER
+      password: $DOCKERHUBPASS
+      email: $DOCKERHUBEMAIL
+      repository: skoppe/afl-dist
+      working-dir:  "/afl"
+      entrypoint: "./afl-dist"
+      ports: "8080"
