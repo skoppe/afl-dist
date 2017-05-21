@@ -7,7 +7,6 @@ import std.range;
 import std.conv;
 import afldist.test;
 
-
 struct Stats {
   size_t start_time;
   size_t last_update;

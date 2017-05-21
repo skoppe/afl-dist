@@ -1,15 +1,15 @@
-box: skoppe/docker-ldc
+box: skoppe/docker-dmd
 
 build:
   steps:
     - script:
         name: unittests
         code: |
-          dub test --compiler=ldc2 --build=release
+          dub test
     - script:
         name: build
         code: |
-          dub build --compiler=ldc2 --build=release
+          dub build --build=release
           cp afl-dist $WERCKER_OUTPUT_DIR
 
 deploy-docker-hub:
