@@ -1,4 +1,4 @@
-box: dlanguage/ldc
+box: skoppe/docker-ldc
 
 build:
   steps:
