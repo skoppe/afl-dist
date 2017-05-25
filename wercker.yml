@@ -1,4 +1,4 @@
-box: skoppe/docker-dmd
+box: skoppe/docker-ldc-afl
 
 build:
   steps:
