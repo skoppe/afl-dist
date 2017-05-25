@@ -13,7 +13,7 @@ build:
           cp afl-dist $WERCKER_OUTPUT_DIR
 
 deploy-docker-hub:
-  box: skoppe/afl
+  box: skoppe/docker-ldc-afl
   steps:
     - script:
         name: prep container
