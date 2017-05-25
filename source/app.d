@@ -49,7 +49,7 @@ abstract class Fuzzer {
           cmd ~= ["-M","fuzzer01"];
         } else
           cmd ~= ["-S","fuzzer01"];
-        cmd ~= [targetBinary,"--minify"];
+        cmd ~= [targetBinary,"--minify"]; // TODO: this --minify should be supplied as trailing arguments to afl-dist
         logInfo("Starting Fuzzer");
         auto fuzzer = pipeProcess(cmd, Redirect.stdin, cast(const(string[string]))null, cast(Config)0, dirName(aflBinary));
         bool fuzzing = true;

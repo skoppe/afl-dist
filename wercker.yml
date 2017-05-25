@@ -15,15 +15,14 @@ build:
 deploy-docker-hub:
   box: skoppe/afl
   steps:
-  - script:
-      name: prep container
-      code: |
-        mv $WERCKER_SOURCE_DIR/afl-dist /afl/afl-dist
-  - internal/docker-push:
-      username: $DOCKERHUBUSER
-      password: $DOCKERHUBPASS
-      email: $DOCKERHUBEMAIL
-      repository: skoppe/afl-dist
-      working-dir:  "/afl"
-      entrypoint: "./afl-dist"
-      ports: "8080"
+    - script:
+        name: prep container
+        code: |
+          mv $WERCKER_SOURCE_DIR/afl-dist /afl/afl-dist
+    - internal/docker-push:
+        username: $DOCKERHUBUSER
+        password: $DOCKERHUBPASS
+        email: $DOCKERHUBEMAIL
+        repository: skoppe/afl-dist
+        working-dir:  "/afl"
+        ports: "8080"
