@@ -3,14 +3,14 @@ description "Client/Server application for running afl distributed"
 authors "Sebastiaan Koppe"
 copyright "Copyright © 2017, Sebastiaan Koppe"
 license "GPL"
-dependency "vibe-d:http" version="~>0.8.0-beta.5"
-dependency "vibe-d:core" version="~>0.8.0-beta.5"
+dependency "vibe-d:http" version="~>0.8.2"
+dependency "vibe-d:core" version="~>0.8.2"
 versions "VibeCustomMain"
 configuration "application" {
 	targetType "executable"
 }
 configuration "unittest" {
-    dependency "unit-threaded" version="~>0.7.11"
+    dependency "unit-threaded" version="~>0.7.38"
     preBuildCommands "dub run unit-threaded -c gen_ut_main -- -f bin/ut.d"
     importPaths "bin"
     excludedSourceFiles "source/app.d"
